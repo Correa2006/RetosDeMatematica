@@ -308,6 +308,15 @@ def ecuacion_cuadratica(logo, ventana):
             limpiar_grafica()
             return
 
+        if a == 0:
+            limpiar_entradas(
+                termino_cuadratico_texto,
+                termino_lineal_texto,
+                termino_independiente_texto
+            )
+            termino_cuadratico_texto.insert(0, "No puede ser igual a cero")
+            return
+
         if(a == 1 and b == 1):
             ecuacion_general_resultado["text"] = f"x² + x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
         elif(a == 1 and b == -1):
