@@ -112,7 +112,7 @@ def ecuacion_cuadratica(logo, ventana):
         ventana,
         text="Δ = b² - 4ac",
         font="Calibri 12",
-        justify="center",
+        justify="left",
         background="gray93",
         foreground="gray39"
     )
@@ -143,7 +143,7 @@ def ecuacion_cuadratica(logo, ventana):
         ventana,
         text="x12 = (-b ∓ √(b² - 4ac)) / (2a)",
         font="Calibri 12",
-        justify="center",
+        justify="left",
         background="gray93",
         foreground="gray39",
     )
@@ -174,6 +174,7 @@ def ecuacion_cuadratica(logo, ventana):
     x1_resultado = Label(
         ventana,
         font="Calibri 12",
+        justify="left",
         background="gray93",
         foreground="gray39"
     )
@@ -201,6 +202,7 @@ def ecuacion_cuadratica(logo, ventana):
     x2_resultado = Label(
         ventana,
         font="Calibri 12",
+        justify="left",
         background="gray93",
         foreground="gray39"
     )
@@ -228,6 +230,7 @@ def ecuacion_cuadratica(logo, ventana):
     vertice_resultado = Label(
         ventana,
         text="V = (-b / (2a), ((4ac) - (b²)) / (4a))",
+        justify="left",
         font="Calibri 12",
         background="gray93",
         foreground="gray39",
@@ -308,37 +311,65 @@ def ecuacion_cuadratica(logo, ventana):
             limpiar_grafica()
             return
 
+        if a == 0:
+            limpiar_entradas(
+                termino_cuadratico_texto,
+                termino_lineal_texto,
+                termino_independiente_texto
+            )
+            termino_cuadratico_texto.insert(0, "No puede ser igual a cero")
+            return
+
+        ecuacion_general_resultado["text"] = "1) "
+
         if(a == 1 and b == 1):
-            ecuacion_general_resultado["text"] = f"x² + x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"x² + x + ({int(c)}) = 0"
         elif(a == 1 and b == -1):
-            ecuacion_general_resultado["text"] = f"x² - x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"x² - x + ({int(c)}) = 0"
         elif(a == -1 and b == 1):
-            ecuacion_general_resultado["text"] = f"- x² + x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"- x² + x + ({int(c)}) = 0"
         elif(a == -1 and b == -1):
-            ecuacion_general_resultado["text"] = f"- x² - x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"- x² - x + ({int(c)}) = 0"
         elif((a != 1 or a != -1) and b == 1):
-            ecuacion_general_resultado["text"] = f"{int(a)}x² + x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b*-1)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"{int(a)}x² + x + ({int(c)}) = 0"
         elif((a != 1 or a != -1) and b == -1):
-            ecuacion_general_resultado["text"] = f"{int(a)}x² - x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b*-1)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"{int(a)}x² - x + ({int(c)}) = 0"
         elif(a == 1 and (b != 1 or b != -1)):
-            ecuacion_general_resultado["text"] = f"x² + ({int(b)})x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b*-1)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"x² + ({int(b)})x + ({int(c)}) = 0"
         elif(a == -1 and (b != 1 or b != -1)):
-            ecuacion_general_resultado["text"] = f"- x² + ({int(b)})x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b*-1)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"- x² + ({int(b)})x + ({int(c)}) = 0"
         else:
-            ecuacion_general_resultado["text"] = f"{int(a)}x² + ({int(b)})x + ({int(c)}) = 0\n\nx12 = (-{int(b)} ∓ √({int(b)}² - 4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = (-({int(b)}) ∓ √(({int(b)})² -4({int(a)})({int(c)}))) / (2({int(a)}))\n\nx12 = ({int(b*-1)} ∓ √({int(b*-1)} + ({int(-4*a*c)}))) / ({int(2*a)})\n\nx12 = ({int(b*-1)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)})"
+            ecuacion_general_resultado["text"] += f"{int(a)}x² + ({int(b)})x + ({int(c)}) = 0"
+
+        ecuacion_general_resultado["text"] += f"\n\n2) x12 = (-({int(b)}) ∓ √(({int(b)})² - 4({int(a)})({int(c)}))) / (2({int(a)}))"
+        ecuacion_general_resultado["text"] += f"\n\n3) x12 = ({int(-1*b)} ∓ √({int(b**2)} + ({int(-4*a*c)}))) / ({int(2*a)})"
+        ecuacion_general_resultado["text"] += f"\n\n4) x12 = ({int(-1*b)} ∓ √({int((b**2) + (-4*a*c))})) / ({int(2*a)}))"
 
         signo_discriminativo = b**2 - 4*a*c
-        signo_discriminativo_resultado["text"] = f"Δ = ({int(b)})² - 4({int(a)})({int(c)})\n\nΔ = ({int(b)**2}) - ({int(4*a*c)})\n\nΔ = {signo_discriminativo}"
+        signo_discriminativo_resultado["text"] = f"1) Δ = ({int(b)})² - 4({int(a)})({int(c)})"
+        signo_discriminativo_resultado["text"] += f"\n\n2) Δ = ({int(b)**2}) - ({int(4*a*c)})"
+        signo_discriminativo_resultado["text"] += f"\n\n3) Δ = {signo_discriminativo}"
 
         vertice = (-b / (a*2), ((4*a*c) - (b**2))/(4*a))
-        vertice_resultado['text'] = f"V = (-({int(b)}) / (({int(a)})2), (4({int(a)})({int(c)}) - ({int(b)})²) / (4({int(a)})))\n\nV = (({-int(b)}) / ({int(a)*2}), ({int(4*a*c)} - {int(b)**2}) / ({int(4*a)}))\n\nV = ({vertice[0]}, ({int(4*a*c)} - {int(b)**2}) / ({int(4*a)}))\n\nV = ({vertice[0]}, ({int((4*a*c) - (b**2))}) / ({int(4*a)}))\n\nV = ({vertice[0]}, {vertice[1]})"
+        vertice_resultado['text'] = f"1) V = (-({int(b)}) / (({int(a)})2), (4({int(a)})({int(c)}) - ({int(b)})²) / (4({int(a)})))"
+        vertice_resultado['text'] += f"\n\n2) V = (({-int(b)}) / ({int(a)*2}), ({int(4*a*c)} - {int(b)**2}) / ({int(4*a)}))"
+        vertice_resultado['text'] += f"\n\n3) V = ({vertice[0]}, ({int(4*a*c)} - {int(b)**2}) / ({int(4*a)}))"
+        vertice_resultado['text'] += f"\n\n4) V = ({vertice[0]}, ({int((4*a*c) - (b**2))}) / ({int(4*a)}))"
+        vertice_resultado['text'] += f"\n\n5) V = ({vertice[0]}, {vertice[1]})"
+
+        x1_resultado["text"] = x2_resultado["text"] = "5) "
 
         if signo_discriminativo >= 0:
             x1 = ((b*(-1)) + (sqrt((b**2) + (-4*a*c)))) / (2*a)
             x2 = ((b*(-1)) - (sqrt((b**2) + (-4*a*c)))) / (2*a)
 
-            x1_resultado["text"] = f"x1 = ({int(b*-1)} + {int(sqrt((b**2) + (-4*a*c)))}) / ({int(2*a)})\n\nx1 = ({int((b*(-1))) + (int(sqrt((b**2) + (-4*a*c))))}) / ({int(2*a)})\n\nx1 = {x1}"
-            x2_resultado["text"] = f"x2 = ({int(b*-1)} - {int(sqrt((b**2) + (-4*a*c)))}) / ({int(2*a)})\n\nx2 = ({int((b*(-1))) - (int(sqrt((b**2) + (-4*a*c))))}) / ({int(2*a)})\n\nx2 = {x2}"
+            x1_resultado["text"] += f"x1 = ({int(b*-1)} + {int(sqrt((b**2) + (-4*a*c)))}) / ({int(2*a)})"
+            x1_resultado["text"] += f"\n\n6) x1 = ({int((b*(-1))) + (int(sqrt((b**2) + (-4*a*c))))}) / ({int(2*a)})"
+            x1_resultado["text"] += f"\n\n7) x1 = {x1}"
+
+            x2_resultado["text"] += f"x2 = ({int(b*-1)} - {int(sqrt((b**2) + (-4*a*c)))}) / ({int(2*a)})"
+            x2_resultado["text"] += f"\n\n6) x2 = ({int((b*(-1))) - (int(sqrt((b**2) + (-4*a*c))))}) / ({int(2*a)})"
+            x2_resultado["text"] += f"\n\n7) x2 = {x2}"
 
             graficar(
                 a,
@@ -350,8 +381,8 @@ def ecuacion_cuadratica(logo, ventana):
                 vertice=vertice
             )
         else:
-            x1_resultado["text"] = f"x1 = ({int(b*-1)} + {int(sqrt(-((b**2) + (-4*a*c))))}i) / ({int(2*a)})"
-            x2_resultado["text"] = f"x2 = ({int(b*-1)} - {int(sqrt(-((b**2) + (-4*a*c))))}i) / ({int(2*a)})"
+            x1_resultado["text"] += f"x1 = ({int(b*-1)} + {int(sqrt(-((b**2) + (-4*a*c))))}i) / ({int(2*a)})"
+            x2_resultado["text"] += f"x2 = ({int(b*-1)} - {int(sqrt(-((b**2) + (-4*a*c))))}i) / ({int(2*a)})"
 
             graficar(a, b, c, signo_discriminativo, vertice=vertice)
 
