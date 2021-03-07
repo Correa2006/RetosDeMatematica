@@ -320,8 +320,11 @@ def ecuacion_cuadratica(logo, ventana):
             termino_cuadratico_texto.insert(0, "No puede ser igual a cero")
             return
 
+<<<<<<< HEAD
         ecuacion_general_resultado["text"] = "1) "
 
+=======
+>>>>>>> 60025c0985da3940bc11c46333a5c7d426b97099
         if(a == 1 and b == 1):
             ecuacion_general_resultado["text"] += f"x² + x + ({int(c)}) = 0"
         elif(a == 1 and b == -1):
