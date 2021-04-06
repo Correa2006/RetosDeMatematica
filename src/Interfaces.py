@@ -732,7 +732,7 @@ def polinomios(frame):
                     operaciones["text"] = "Multiplicación"
                     frame["text"] = "Multiplicación de Polinomios"
             else:
-                resultado_etiqueta["justify"] = "right"
+                resultado_etiqueta["justify"] = "left"
                 operaciones["text"] = "División"
                 frame["text"] = "División de Polinomios"
 
