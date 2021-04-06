@@ -13,3 +13,12 @@ def limpiar_entradas(*args):
             arg.delete(0, END)
         except:
             continue
+
+
+def ocultar_widgets(frame):
+    widgets = frame.winfo_children()
+
+    for widget in widgets:
+        widget.destroy()
+
+    frame.pack_forget()
